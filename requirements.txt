@@ -5,3 +5,4 @@ mplsoccer
 joblib
 xgboost
 statsbombpy
+streamlit
