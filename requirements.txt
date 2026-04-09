@@ -1,0 +1,7 @@
+numpy
+pandas
+matplotlib
+mplsoccer
+joblib
+xgboost
+statsbombpy
