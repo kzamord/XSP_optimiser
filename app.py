@@ -67,8 +67,10 @@ st.markdown("""
     [data-testid="metric-container"] [data-testid="stMetricValue"] {
         color: var(--accent-blue) !important;
         font-family: 'Syne', sans-serif !important;
-        font-size: 1.3rem !important;
+        font-size: 1.0rem !important;
         font-weight: 700 !important;
+        white-space: nowrap !important;
+        overflow: visible !important;
     }
 
     .stSlider label { color: var(--text-muted) !important; font-size: 0.72rem !important; }
@@ -438,10 +440,17 @@ st.markdown(
 )
 st.markdown("---")
 
-with st.spinner("Computing..."):
+placeholder = st.empty()
+placeholder.markdown(
+    "<p style='text-align:center;color:#00b4d8;font-size:0.8rem;letter-spacing:2px'>"
+    "⟳ COMPUTING xSP HEATMAP...</p>",
+    unsafe_allow_html=True
+)
+with st.spinner("Computing xSP heatmap..."):
     fig, best_xsp, best_dist, best_zone = build_figure(
         mode_key, opp, **grid_kwargs
     )
+placeholder.empty()
 
 col1, col2, col3 = st.columns(3)
 col1.metric("BEST xSP",  f"{best_xsp*100:.1f}%")
